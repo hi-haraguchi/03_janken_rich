@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>力士クイズ</title>
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Source+Han+Serif&display=swap" rel="stylesheet">
+   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap" rel="stylesheet">
+  
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Maru+Gothic&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+<main>
+
+    <section class="odd_section">
+      <section class="title_section">
+      <h1>クイズに答えて、力士を倒せ！</h1>
+      <p>１ターンごとに力士クイズに答えてください。正解すれば相手を押し出していきます。</p>
+      <p>もし土俵際に追い込まれても、相手を投げて一発逆転の可能性あり！</p>
+      </section>
+    </section>
+
+
+
+
+<section class="even_section">
+
+    <section class="quiz_image">
+      <div id="quiz_image_inner">
+        <p>ここに表示される力士の名前を当ててください</p>
+      </div>
+    </section>
+
+    <section>
+      
+        <section class="button_new">
+          <button id="button0">新しい力士</button>
+        </section>
+
+        <section class="button_select_outer">
+          <div class="button_select">
+            <button id="button1"></button>
+            <button id="button2"></button>
+          </div>
+        </section>
+
+        <!-- ここに力士の正解・不正解を表示 -->
+        <section id="result_section">
+          <h3></h3>
+        </section>
+
+      </section>
+
+</section>
+    
+<!-- 背景に土俵、その上に組み合っている力士を表示 -->
+<section class="odd_section2">
+    <div class="container">
+      <img id="torikumi" src="./img/sumo_torikumi.png" alt="">
+    </div>
+    <div class="anata">
+      <h4>あなた←</h4>
+      <h4>→相手</h4>
+    </div>
+</section>
+
+<!-- ここ行司と勝ち負けを表示 -->
+<section class="odd_section3">
+    <section id="battle_result">
+
+    </section>
+</section>
+
+<section class="button_new2">
+  <button id="button3">次の試合</button>
+</section>
+
+
+ 
+
+
+
+     
+
+
+
+  </main>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script>
+
+// クイズの挙動部分
+
+// button押したらリセット
+  $("#button0").off("click");
+  $("#button1").off("click");
+  $("#button2").off("click");
+
+  // 前回の結果を記録
+  let previousNumber = null;  
+
+  // 新しい力士ボタンを押したら、クイズスタート
+  // 画像をランダムで表示
+  // 正解の力士名と不正解の力士名をボタンに表示
+
+  $("#button0").on("click", function () {  
+
+    // 17種類の力士の画像からランダムに表示
+    // 前回の結果以外を表示
+      let randomNumber;
+      do {
+      randomNumber = Math.floor(Math.random() * 17);
+      } while (randomNumber === previousNumber);
+      console.log(randomNumber);
+              
+      let texts = [
+                    "豊昇龍", "大の里", "琴櫻", "大栄翔", "霧島",
+                    "髙安", "若隆景", "若元春","王鵬","阿炎",
+                    "玉鷲","平戸海","尊富士","宇良","翔猿",
+                    "伯桜鵬","熱海富士",
+                  ];
+      // 正解と不正解のボタンを並び替え
+
+      let randomDecision = Math.random() < 0.5;
+
+      if (randomDecision) {
+            $("#button1").css("order", 2);
+            $("#button2").css("order", 1);
+            } else {
+            $("#button1").css("order", 1);
+            $("#button2").css("order", 2);
+            }
+
+      // 乱数に応じて、画像を表示
+      // 正解を表示
+      // 不正解を表示（正解以外でランダムに）
+
+      if (randomNumber === 0) {
+                $("#quiz_image_inner").html('<img src="./img/0hosyoryu.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+              } else if (randomNumber === 1){
+                $("#quiz_image_inner").html('<img src="./img/1onosato.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+              } else if (randomNumber === 2){
+                $("#quiz_image_inner").html('<img src="./img/2kotozakura.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+              } else if (randomNumber === 3){
+                $("#quiz_image_inner").html('<img src="./img/3daieisyo.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+              } else if (randomNumber === 4){
+                $("#quiz_image_inner").html('<img src="./img/4kirishima.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+              } else if (randomNumber === 5){
+                $("#quiz_image_inner").html('<img src="./img/5takayasu.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+
+                } else if (randomNumber === 6){
+                $("#quiz_image_inner").html('<img src="./img/6wakatakakage.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 7){
+                $("#quiz_image_inner").html('<img src="./img/7wakamotoharu.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 8){
+                $("#quiz_image_inner").html('<img src="./img/8oho.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 9){
+                $("#quiz_image_inner").html('<img src="./img/9abi.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 10){
+                $("#quiz_image_inner").html('<img src="./img/10tamawashi.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 11){
+                $("#quiz_image_inner").html('<img src="./img/11hiradoumi.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 12){
+                $("#quiz_image_inner").html('<img src="./img/12takerufuji.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+                 } else if (randomNumber === 13){
+                $("#quiz_image_inner").html('<img src="./img/13ura.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+
+                 } else if (randomNumber === 14){
+                $("#quiz_image_inner").html('<img src="./img/14tobizaru.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+
+                 } else if (randomNumber === 15){
+                $("#quiz_image_inner").html('<img src="./img/15hakuoho.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+
+
+
+
+              } else{
+                $("#quiz_image_inner").html('<img src="./img/16atamifuji.jpg" alt="" class="resize">');
+                $("#button1").text(texts[randomNumber]);
+                let opponent;
+                do {
+                opponent = Math.floor(Math.random() * 17);
+                } while (opponent === randomNumber);
+                console.log(opponent);
+                $("#button2").text(texts[opponent]);
+              }
+
+              previousNumber = randomNumber;   // 前回の数字を保存
+              console.log(previousNumber);
+
+              $("#result_section").text("");
+              $("#result_detail").text(""); // 正解・残念の表示を消す
+            });
+
+        // ここまでが新しい力士のボタンを押した時の挙動
+
+        // ここからが、正解・不正解のボタンを押した時の挙動
+
+
+        $("#button1").on("click", function () {
+              $("#result_section").text("〇　正解！！"); 
+
+
+              // 正解を押したら、９割の確率で相手側に押し出す。
+              // 残り１割の確率でその場で投げて勝利
+              // 自分が土俵際に追い込まれている場合は、投げの確率をあげる
+
+              let randomNumber2 = Math.floor(Math.random() * 10);
+              let dohyo = parseInt($("#torikumi").css("grid-column"))
+              let kimarite = randomNumber2 + (15-dohyo)
+              console.log(kimarite);
+
+
+              if (kimarite < 17) {
+
+                      let currentColumn = parseInt($("#torikumi").css("grid-column"))
+                      $("#torikumi").css("grid-column", currentColumn + 1); // 値を1増やす
+
+                      if (currentColumn + 1 === 13) {
+                      $("#battle_result").html('<img src="./img/sumo_gyouji.png" alt="勝ち"><h3>あなたの勝ち！</h3>');
+              
+
+                      // 勝負がついたらボタンが反応しないようにする
+                      $("#button0").prop("disabled", true);
+                      $("#button1").prop("disabled", true);
+                      $("#button2").prop("disabled", true);
+
+                      }
+
+              } else {
+
+                      $("#torikumi").attr("src", "./img/sumo_nage.png");
+
+
+                      $("#battle_result").html('<img src="./img/sumo_gyouji.png" alt="勝ち"><h3>あなたの勝ち！</h3>');
+              
+                      $("#button0").prop("disabled", true);
+                      $("#button1").prop("disabled", true);
+                      $("#button2").prop("disabled", true);            
+                }
+            
+                });
+
+
+
+
+
+     
+
+
+
+          
+
+    
+        $("#button2").on("click", function () {
+            $("#result_section").text("✕　残念……");
+
+            let currentColumn = parseInt($("#torikumi").css("grid-column"))
+            $("#torikumi").css("grid-column", currentColumn - 1); // 値を1減らす
+
+            if (currentColumn - 1 === 3) {
+            $("#battle_result").html('<h3>あなたの負け… </h3><img src="./img/sumo_gyouji2.png" alt="負け">');
+            
+            $("#button0").prop("disabled", true);
+            $("#button1").prop("disabled", true);
+            $("#button2").prop("disabled", true);          
+            }
+
+         });
+
+
+        $("#button3").on("click", function () {
+        location.reload();
+        });
+
+
+
+
+
+
+   
+
+
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>

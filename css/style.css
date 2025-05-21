@@ -1,0 +1,225 @@
+
+body{
+  font-family: 'Zen Maru Gothic', sans-serif;
+  font-weight: 550;
+}
+
+.odd_section{
+  padding: 20px 0;
+  background-color: darkslategray;
+  color: #FFFFFF;
+}
+
+h1{
+  font-size: 60px;
+  margin-bottom: 20px;
+  margin: 20px auto 40px;
+}
+
+p{
+  font-size: 15px;
+  margin:5px 0;
+}
+
+
+.title_section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  color: #FFFFFF;
+}
+
+
+.even_section{
+  min-height: 300px;
+  padding: 20px 0;
+  background-color: #FFFFFF;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 300px;
+}
+
+
+.odd_section2{
+  background: url(../img/sumo_dohyou_naname.png);
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  height: 200px;
+  width: 1200px;
+  margin: 0 auto;
+  
+}
+
+.odd_section2 img{
+    max-height: 100px;
+    display: block;
+    margin: 0 auto;
+}
+
+.container {
+  display: grid;
+  grid-template-columns: repeat(15, 1fr);
+}
+
+#torikumi{
+  grid-column: 8;
+  width: 100%;
+}
+
+.anata{
+  height: 120px;
+  display: flex;
+  justify-content: space-around;
+  align-items: flex-end;
+
+}
+
+h4 {
+  font-size: 20px;
+}
+
+.odd_section3{
+  background-color: white;
+  height: 80px;
+}
+
+
+#result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+.quiz_image{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.resize{
+  width : 240px;
+  height: 270px;
+  object-fit: cover;
+}
+
+
+.button_new{
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.button_select_outer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+.button_select{
+  display: flex;
+  gap: 50px;
+}
+
+button{
+  width: 150px;
+  height: 50px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: lightgray;
+  color: #000;
+  border: none;
+  box-shadow: 0 5px 0 gray; /* 影の太さ・色 */
+  border-radius: 60px;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+button:active {
+  box-shadow: none;
+  transform: translateY(5px);
+}
+
+#button1, #button2 {
+    flex: 1;       /* ボタンが均等な幅になるよう調整 */
+}
+
+#button0{
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: lightgray;
+  color: #000;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;  
+}
+
+#button3{
+  width: 100px;
+  height: 30px;
+  font-size: 14px;
+  font-weight: 500;
+  background-color: lightgray;
+  color: #000;
+  border: none;
+  border-radius: 60px;
+  cursor: pointer;  
+}
+
+#result_section{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin: 10px 0;
+  height: 50px;
+  font-weight: bold;
+  font-size: 30px;
+}
+
+h3{
+  font-size: 30px;
+}
+
+#battle_result{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+}
+
+#battle_result img{
+    max-height: 100px;
+    display: block;
+    margin: 0 10px 0 0 ;
+
+}
+
+.button_new2{
+  margin: 10px 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+
+
+
+
+
+
+
+
